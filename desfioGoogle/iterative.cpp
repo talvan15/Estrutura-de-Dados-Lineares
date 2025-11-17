@@ -14,7 +14,7 @@ long long collatz_sequence(long long n) {
         else{
             n = 3 * n + 1;
 
-        }    
+        }   
         count++;    
     }
 

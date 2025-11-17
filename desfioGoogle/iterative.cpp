@@ -26,8 +26,7 @@ int main(){
     long long total_itens = 0;
     int maior_num = 0;
 
-    auto start = chrono::steady_clock::now();
-    
+    chrono::steady_clock::time_point start = chrono::steady_clock::now();
     for(int i = 1; i < 1000000 ; i++){
 
         long long tamanho = collatz_sequence(i);
@@ -38,9 +37,10 @@ int main(){
         }
        
     }
-    auto end = chrono::steady_clock::now();
-
+    chrono::steady_clock::time_point end = chrono::steady_clock::now();
     chrono::duration<double> elapsed_seconds = end - start;
+
+
     cout << "Maior sequencia:" << endl;
     cout << "Numero " << maior_num << " Total de itens: " << total_itens << endl;
     cout << " Time: " << elapsed_seconds.count() << "s\n";

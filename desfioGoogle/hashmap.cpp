@@ -3,22 +3,32 @@
 #include <chrono>
 using namespace std;
 
-unordered_map<long long, long long> memo;
+unordered_map<long long, long long> memoria;
 
-long long collatz_hash(long long n) {
+long long sequenciaHash(long long n) {
     if (n == 1) return 1;
 
-    if (memo.count(n)) return memo[n];
+    if (memoria.count(n)) return memoria[n];
 
-    long long result;
+    long long count = 1;
+    while(n != 1){
 
-    if (n % 2 == 0)
-        result = 1 + collatz_hash(n / 2);
-    else
-        result = 1 + collatz_hash(3 * n + 1);
+        if(n % 2 == 0){
+            n = n /2;
+            
+        }
 
-    memo[n] = result;
-    return result;
+        else{
+            n = 3 * n + 1;
+
+        }   
+        count++;    
+    }
+
+    return count;
+
+    memoria[n] = count;
+    return count;
 }
 
 int main() {
@@ -28,7 +38,7 @@ int main() {
 
     chrono::steady_clock::time_point start = chrono::steady_clock::now();
     for (long long i = 1; i < 1'000'000; i++) {
-        long long comprimento = collatz_hash(i);
+        long long comprimento = sequenciaHash(i);
         if (comprimento > maiorComprimento) {
             maiorComprimento = comprimento;
             numeroComMaiorSeq = i;
@@ -37,9 +47,9 @@ int main() {
     chrono::steady_clock::time_point end = chrono::steady_clock::now();
     chrono::duration<double> elapsed_seconds = end - start;
 
-    cout << "Número abaixo de 1.000.000 com a maior sequência: "
+    cout << "Número COM maior sequência HASH: "
          << numeroComMaiorSeq << endl;
-    cout << "Tamanho da sequência: " << maiorComprimento << endl;
+     cout << "Numero " << numeroComMaiorSeq << " Total de itens: " << maiorComprimento << endl;
 
     cout << "Tempo de execução: " << elapsed_seconds.count() << " segundos" << endl;
 

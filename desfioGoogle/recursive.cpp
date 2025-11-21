@@ -2,13 +2,13 @@
 #include <chrono>
 using namespace std;
 
-long long collatz_sequence(long long n) {
+long long sequencia(long long n) {
     
     if(n ==1) return 1;
 
-    else if(n % 2 == 0) return 1 + collatz_sequence(n / 2);
+    else if(n % 2 == 0) return 1 + sequencia(n / 2);
     
-    else return 1 + collatz_sequence(3 * n + 1);
+    else return 1 + sequencia(3 * n + 1);
 }
 
 int main(){
@@ -19,7 +19,7 @@ int main(){
     chrono::steady_clock::time_point start = chrono::steady_clock::now();
     for(int i = 1; i < 1'000'000 ; i++){
 
-        long long tamanho = collatz_sequence(i);
+        long long tamanho = sequencia(i);
         if (tamanho > total_itens )
         {
             total_itens = tamanho;
@@ -31,7 +31,7 @@ int main(){
     chrono::duration<double> elapsed_seconds = end - start;
 
 
-    cout << "Maior sequencia:" << endl;
+    cout << "Maior sequencia com RECURSIVA:" << endl;
     cout << "Numero " << maior_num << " Total de itens: " << total_itens << endl;
     cout << " Time: " << elapsed_seconds.count() << "s\n";
 

@@ -17,7 +17,7 @@ int main(){
     int maior_num = 0;
 
     chrono::steady_clock::time_point start = chrono::steady_clock::now();
-    for(int i = 1; i < 1000000 ; i++){
+    for(int i = 1; i < 1'000'000 ; i++){
 
         long long tamanho = collatz_sequence(i);
         if (tamanho > total_itens )

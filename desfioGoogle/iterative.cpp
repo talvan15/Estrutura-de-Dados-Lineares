@@ -3,22 +3,17 @@
 using namespace std;
 
 long long sequenciaIterativa(long long n) {
-    long long count = 1;
+    long long tamanho = 1;
     while(n != 1){
 
-        if(n % 2 == 0){
-            n = n /2;
-            
-        }
+        if(n % 2 == 0) n = n /2;
 
-        else{
-            n = 3 * n + 1;
-            
-        }   
-        count++;    
+        else n = 3 * n + 1;
+
+        tamanho++;    
     }
 
-    return count;
+    return tamanho;
 }
 
 int main(){
@@ -29,7 +24,7 @@ int main(){
     chrono::steady_clock::time_point start = chrono::steady_clock::now();
     for(int i = 1; i < 1'000'000 ; i++){
 
-        long long tamanho =  sequenciaIterativa(i);
+        long long tamanho = sequenciaIterativa(i);
         if (tamanho > total_itens )
         {
             total_itens = tamanho;

@@ -1,10 +1,6 @@
-
 def compactar_dna(input_txt, output_bin):
     mapping = {
-        'A': '00',
-        'C': '01',
-        'G': '10',
-        'T': '11'
+        'A':'00', 'C':'01', 'G':'10', 'T':'11'
     }
 
     
@@ -46,3 +42,10 @@ def descompactar_dna(input_bin, output_txt):
         f.write(dna)
 
     print("Descompactação concluída!")
+
+if __name__ == "__main__":
+    input_txt = 'dna/dna.txt'
+    output_bin = 'dna/compactado.txt'
+
+    compactar_dna(input_txt, output_bin)
+    descompactar_dna(output_bin, 'dna/dna_descompactado.txt')
